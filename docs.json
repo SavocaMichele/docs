@@ -17,14 +17,13 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Docu",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Overview",
             "pages": [
               "introduction",
-              "quickstart",
-              "development"
+              "hardware",
             ]
           },
           {
