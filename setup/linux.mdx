@@ -12,3 +12,39 @@ description: "This section provides a step-by-step guide to setting up a Linux v
 
   ![images/iso_dialog.png](/images/iso_dialog.png)
 </Accordion>
+
+## Setting up the VM
+
+### Creating the VM
+
+To create a new virtual machine, navigate to the top right corner and click on `Create VM`.
+
+<AccordionGroup>
+  <Accordion title="General" icon="house">
+    In the General Tab, the only required fields are the `VM ID` and the `Name`. The Name field can be set to anything you like, while the `VM ID` should be unique and between 100 and 999.999.999.
+  </Accordion>
+  <Accordion title="OS (Operating System)" icon="linux">
+    In the OS Tab, make sure to select the ISO image that was uploaded earlier in the [Prerequisites](http://docu.msavoca.com/setup/linux#prerequisites) Step. The `Type` of the Guest OS should be set to `Linux` and the `Version` to `6.x - 2.6 Kernel`.
+  </Accordion>
+  <Accordion title="System" icon="server">
+    In the System Tab, the `Graphic Card` should stay on default since we're dealing with integrated graphics.\
+    Since we're using a moden BIOS, the `Machine` should be set to `q35` and the `BIOS` to `OVMF (UEFI)`. Then, you will have to select the Homelabs local storage as the `EFI Storage`.
+  </Accordion>
+  <Accordion title="Disks" icon="database">
+    In the Disks Tab, you can leave everything as it is unless you want to allocate more storage to the VM. If so, you can increase the `Disk Size (GiB)` to your liking.
+  </Accordion>
+  <Accordion title="CPU" icon="microchip">
+    In the CPU Tab, set the `Cores` to the desired amount that is necessary for your use case.\
+    Since we're dealing with an AM5 (Zen 4) CPU, the `Type` should be set to `x86-64-v4`. This will enable the CPU to use the latest features.
+  </Accordion>
+  <Accordion title="Memory" icon="memory">
+    In the Memory Tab, set the `Memory (MiB)` to the desired amount that is necessary for your use case. Note, a minimum of 2048 MiB is recommended.\
+    Additionally, you will want to tick the `Ballooning Device` checkbox to allow the VM to dynamically adjust its memory usage. Make sure to set the `Minimum memory (MiB)` to a lower amount than the `Memory (MiB)`.
+  </Accordion>
+  <Accordion title="Network" icon="network-wired">
+    In the Memory Tab, the default settings should be sufficient for most use cases. The `Bridge` should be set to `vmbr0` and the `Model` to `VirtIO (paravirtualized)`.
+  </Accordion>
+  <Accordion title="Confirm" icon="circle-check">
+    That concludes the setup of the VM\! Validate your selected options and click on `Finish` to create the VM.
+  </Accordion>
+</AccordionGroup>
