@@ -48,3 +48,53 @@ To create a new virtual machine, navigate to the top right corner and click on `
     That concludes the setup of the VM\! Validate your selected options and click on `Finish` to create the VM.
   </Accordion>
 </AccordionGroup>
+
+## Setting up Ubuntu
+
+<AccordionGroup>
+  <Accordion title="Starting the Machine" icon="terminal">
+    After you created the VM, it will appear in the navigation on the left hand side with the name and ID you gave it earlier.\
+    Click on the VM, then `Console → Start Now`.
+  </Accordion>
+  <Accordion title="Install Ubuntu Server" icon="ubuntu">
+    In your console you should now see `Try to install Ubuntu Server`. Hit `Enter` to start the installation.\
+    If you don't do anything, the installation will start automatically.
+  </Accordion>
+  <Accordion title="Type of Installation" icon="filter">
+    For most purposes in the homelab, `Ubuntu Server` is recommended. It contains a curated set of packages that save you time and effort.
+
+    You can select `Ubuntu Server (minimized)` but you might have to install additional packages for your use case, later on.
+  </Accordion>
+  <Accordion title="Network configuration" icon="network-wired">
+    For the network configuration, you can leave everything as it is since the Sever will only run via an Ethernet connection.\
+    \
+    Proxy configuration is not necessary for the homelab.
+  </Accordion>
+  <Accordion title="Mirror configuration" icon="flipboard">
+    The Ubuntu Installation will automatically run a mirror location test. After it is completed, you can select Done and hit `Enter`.
+  </Accordion>
+  <Accordion title="Disks" icon="database">
+    Since we're using a virtual machine, that already has a virtual disk attached to it, you can leave the default settings on `Use an entire disk`.
+  </Accordion>
+  <Accordion title="SSH configuration" icon="terminal">
+    Make sure to tick the `Install OpenSSH server` checkbox. This will allow you to connect to the server via SSH later on.
+  </Accordion>
+  <Accordion title="Removing the ISO Image" icon="compact-disc">
+    After the installation is completed, you will be prompted to remove the installation media. Make sure to remove the ISO image from the VM.\
+    You can do so by selecting the VM in the navigation, then `Hardware → CD/DVD Drive → Remove`.
+
+    After you removed the ISO image, go back to the console and hit `Enter` to complete the installation.
+  </Accordion>
+  <Accordion title="Finishing up" icon="circle-check">
+    Now that the installation is completed, you can log in to the server with the credentials you set up during the installation.\
+    \
+    The last step is to allow SSH connections to the server. You can do so by executing the command:
+
+    ```bash
+    sudo ufw allow ssh
+    ```
+
+    \
+    That's it\! You've successfully set up a Linux Virtual Machine within the homelab.
+  </Accordion>
+</AccordionGroup>
