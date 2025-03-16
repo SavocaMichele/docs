@@ -1,0 +1,38 @@
+---
+title: "Networking"
+description: "In this section, we will explore the benefits of using Cloudflare Tunnels for securing and optimizing remote access to the Homelab. We will also cover the setup process and best practices to ensure a secure and reliable connection."
+---
+
+## Prerequisites
+
+<AccordionGroup>
+  <Accordion title="Tunnel" icon="ethernet">
+    A Cloudflare Tunnel is required before proceeding with the installation. This should already be set up, but if not, log in to your [Cloudflare Dashboard](https://dash.cloudflare.com) and navigate to `Zero Trust → Networks → Tunnels` to create a new tunnel.\
+    \
+    This tunnel will serve as the primary gateway for all services running within the Homelab.
+  </Accordion>
+  <Accordion title="Cloudflared LXC" icon="cloudflare">
+    Before you can use Cloudflare Tunnels, a [Cloudflared LXC](https://community-scripts.github.io/ProxmoxVE/scripts?id=cloudflared) container must be running on your homelab. This should already be set up, but if not, navigate to Homelab → Shell and execute the following script:
+
+    ```bash
+    bash -c "$(wget -qLO - https://github.com/community-scripts/ProxmoxVE/raw/main/ct/cloudflared.sh)"
+    ```
+
+    During the installation process, you will be prompted to configure Cloudflared as a DNS-over-HTTPS (DoH) proxy. It is **NOT** recommended to enable this option, as it may cause conflicts with other applications.
+  </Accordion>
+  <Accordion title="Connecting to the tunnel" icon="network-wired">
+    Once the installation is complete, you should see a new VM named `(cloudflared)`. Right-click on it and open the console to proceed with the setup.\
+    \
+    To connect the tunnel, return to your [Cloudflare Zero Trust Dashboard](https://one.dash.cloudflare.com) and navigate to `Networks → Tunnels → TUNNEL_NAME → Configure → Overview → Debian → 64-bit`. Copy the second command and paste it into the console to finalize the setup.The command should resemble the following:
+
+    ```bash
+    sudo cloudflared service install TUNNEL_KEY
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Connecting a VM
+
+To connect a VM to the tunnel, navigate to your [Cloudflare Zero Trust Dashboard](https://one.dash.cloudflare.com) and go to `Networks → Tunnels → TUNNEL_NAME → Configure → Public Hostname → Add a public hostname`.\
+\
+Here, you can create a new hostname and assign it to a specific VM. Set the `Type` to `HTTP, HTTPS, or TCP`. The `URL` should correspond to the IPv4 address and Port (mainly for gaming VMs) of the VM you want to connect.
