@@ -4,8 +4,8 @@
   "name": "Homelab Docu",
   "colors": {
     "primary": "#3282ff",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "light": "#3282ff",
+    "dark": "#3282ff"
   },
   "background": {
     "color": {
