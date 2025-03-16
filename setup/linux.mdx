@@ -3,3 +3,98 @@ title: "Linux"
 description: "This section provides a step-by-step guide to setting up a Linux virtual machine within the homelab. For simplicity, this guide focuses on the installation of Ubuntu Server 24.04.2 LTS. The installation process is straightforward and can be completed in just a few minutes."
 ---
 
+<Accordion title="Prerequsites" icon="bookmark">
+  Before starting the installation, ensure that the Ubuntu Server 24.04.2 LTS ISO file is available. If it is not already uploaded, you can download it from the [official Ubuntu website](https://ubuntu.com/download/server).
+
+  To upload the ISO file, navigate to `Homelab Server → Local (homelab) → ISO Images → Upload`.
+
+  ![images/iso_upload.png](/images/iso_upload.png)
+
+  ![images/iso_dialog.png](/images/iso_dialog.png)
+</Accordion>
+
+## Setting up the VM
+
+### Creating the VM
+
+To create a new virtual machine, navigate to the top right corner and click on `Create VM`.
+
+<AccordionGroup>
+  <Accordion title="General" icon="house">
+    In the General Tab, the only required fields are the `VM ID` and the `Name`. The Name field can be set to anything you like, while the `VM ID` should be unique and between 100 and 999.999.999.
+  </Accordion>
+  <Accordion title="OS (Operating System)" icon="linux">
+    In the OS Tab, make sure to select the ISO image that was uploaded earlier in the [Prerequisites](http://docu.msavoca.com/setup/linux#prerequisites) Step. The `Type` of the Guest OS should be set to `Linux` and the `Version` to `6.x - 2.6 Kernel`.
+  </Accordion>
+  <Accordion title="System" icon="server">
+    In the System Tab, the `Graphic Card` should stay on default since we're dealing with integrated graphics.\
+    Since we're using a moden BIOS, the `Machine` should be set to `q35` and the `BIOS` to `OVMF (UEFI)`. Then, you will have to select the Homelabs local storage as the `EFI Storage`.
+  </Accordion>
+  <Accordion title="Disks" icon="database">
+    In the Disks Tab, you can leave everything as it is unless you want to allocate more storage to the VM. If so, you can increase the `Disk Size (GiB)` to your liking.
+  </Accordion>
+  <Accordion title="CPU" icon="microchip">
+    In the CPU Tab, set the `Cores` to the desired amount that is necessary for your use case.\
+    Since we're dealing with an AM5 (Zen 4) CPU, the `Type` should be set to `x86-64-v4`. This will enable the CPU to use the latest features.
+  </Accordion>
+  <Accordion title="Memory" icon="memory">
+    In the Memory Tab, set the `Memory (MiB)` to the desired amount that is necessary for your use case. Note, a minimum of 2048 MiB is recommended.\
+    Additionally, you will want to tick the `Ballooning Device` checkbox to allow the VM to dynamically adjust its memory usage. Make sure to set the `Minimum memory (MiB)` to a lower amount than the `Memory (MiB)`.
+  </Accordion>
+  <Accordion title="Network" icon="network-wired">
+    In the Memory Tab, the default settings should be sufficient for most use cases. The `Bridge` should be set to `vmbr0` and the `Model` to `VirtIO (paravirtualized)`.
+  </Accordion>
+  <Accordion title="Confirm" icon="circle-check">
+    That concludes the setup of the VM\! Validate your selected options and click on `Finish` to create the VM.
+  </Accordion>
+</AccordionGroup>
+
+## Setting up Ubuntu
+
+<AccordionGroup>
+  <Accordion title="Starting the Machine" icon="terminal">
+    After you created the VM, it will appear in the navigation on the left hand side with the name and ID you gave it earlier.\
+    Click on the VM, then `Console → Start Now`.
+  </Accordion>
+  <Accordion title="Install Ubuntu Server" icon="ubuntu">
+    In your console you should now see `Try to install Ubuntu Server`. Hit `Enter` to start the installation.\
+    If you don't do anything, the installation will start automatically.
+  </Accordion>
+  <Accordion title="Type of Installation" icon="filter">
+    For most purposes in the homelab, `Ubuntu Server` is recommended. It contains a curated set of packages that save you time and effort.
+
+    You can select `Ubuntu Server (minimized)` but you might have to install additional packages for your use case, later on.
+  </Accordion>
+  <Accordion title="Network configuration" icon="network-wired">
+    For the network configuration, you can leave everything as it is since the Sever will only run via an Ethernet connection.\
+    \
+    Proxy configuration is not necessary for the homelab.
+  </Accordion>
+  <Accordion title="Mirror configuration" icon="flipboard">
+    The Ubuntu Installation will automatically run a mirror location test. After it is completed, you can select Done and hit `Enter`.
+  </Accordion>
+  <Accordion title="Disks" icon="database">
+    Since we're using a virtual machine, that already has a virtual disk attached to it, you can leave the default settings on `Use an entire disk`.
+  </Accordion>
+  <Accordion title="SSH configuration" icon="terminal">
+    Make sure to tick the `Install OpenSSH server` checkbox. This will allow you to connect to the server via SSH later on.
+  </Accordion>
+  <Accordion title="Removing the ISO Image" icon="compact-disc">
+    After the installation is completed, you will be prompted to remove the installation media. Make sure to remove the ISO image from the VM.\
+    You can do so by selecting the VM in the navigation, then `Hardware → CD/DVD Drive → Remove`.
+
+    After you removed the ISO image, go back to the console and hit `Enter` to complete the installation.
+  </Accordion>
+  <Accordion title="Finishing up" icon="circle-check">
+    Now that the installation is completed, you can log in to the server with the credentials you set up during the installation.\
+    \
+    The last step is to allow SSH connections to the server. You can do so by executing the command:
+
+    ```bash
+    sudo ufw allow ssh
+    ```
+
+    \
+    That's it\! You've successfully set up a Linux Virtual Machine within the homelab.
+  </Accordion>
+</AccordionGroup>
