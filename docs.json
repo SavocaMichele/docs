@@ -29,7 +29,7 @@
           {
             "group": "Setup",
             "pages": [
-              "setup/linux",
+              "setup/ubuntu",
               "setup/windows"
             ]
           },
