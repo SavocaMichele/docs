@@ -64,7 +64,7 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/logo_dark.svg",
+    "dark": "/logo/logo_light.svg"
   }
 }
