@@ -33,7 +33,7 @@
             ]
           }
         ]
-      },
+      }
     ],
     "global": {
       "anchors": [
@@ -46,7 +46,7 @@
           "anchor": "Zero Trust",
           "href": "https://one.dash.cloudflare.com/",
           "icon": "cloudflare"
-        },
+        }
       ]
     }
   },
