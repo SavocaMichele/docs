@@ -7,8 +7,10 @@
     "light": "#07C983",
     "dark": "#15803D",
     "background": {
-      "light": "#fafafa",
-      "dark": "#18181b"
+      "color": {
+        "light": "#fafafa",
+        "dark": "#18181b"
+      }
     }
   },
   "favicon": "/favicon.svg",
