@@ -1,5 +1,5 @@
 ---
-title: "Networking"
+title: "Cloudflare Tunnels"
 description: "In this section, we will explore the benefits of using Cloudflare Tunnels for securing and optimizing remote access to the Homelab. We will also cover the setup process and best practices to ensure a secure and reliable connection."
 ---
 
@@ -35,4 +35,4 @@ description: "In this section, we will explore the benefits of using Cloudflare 
 
 To connect a VM to the tunnel, navigate to your [Cloudflare Zero Trust Dashboard](https://one.dash.cloudflare.com) and go to `Networks → Tunnels → TUNNEL_NAME → Configure → Public Hostname → Add a public hostname`.\
 \
-Here, you can create a new hostname and assign it to a specific VM. Set the `Type` to `HTTP, HTTPS, or TCP`. The `URL` should correspond to the IPv4 address and Port (mainly for gaming VMs) of the VM you want to connect.
+Here, you can create a new hostname and assign it to a specific VM. Set the `Type` to `HTTP or HTTPS`. The `URL` should correspond to the IPv4 address and Port of the VM you want to connect.
